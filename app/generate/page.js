@@ -1,17 +1,16 @@
 "use client"
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { ToastContainer, toast, Zoom } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-const Generate = () => {
+const GenerateContent = () => {
 
   const searchParams = useSearchParams()
 
   const [links, setlinks] = useState([{ link: "", linktext: "" }]);
-  const [handle, sethandle] = useState(searchParams.get('handle'));
+  const [handle, sethandle] = useState(searchParams.get('handle') || "");
   const [pfp, setpfp] = useState("")
 
   const handleChange = (index, link, linktext) => {
@@ -87,11 +86,11 @@ const Generate = () => {
 
       <div className="col-1 flex flex-col gap-4 justify-center items-center mt-20 lg:mt-[5vh] mb-10 px-4">
 
-          <Link href={"/"}>
-            <div className="logo flex items-center cursor-pointer hover:scale-110 transition-transform duration-300">
-              <img src="./assets/branch.png" height={40} width={40} alt="branch" />
-            </div>
-          </Link>
+        <Link href={"/"}>
+          <div className="logo flex items-center cursor-pointer hover:scale-110 transition-transform duration-300">
+            <img src="./assets/branch.png" height={40} width={40} alt="branch" />
+          </div>
+        </Link>
 
         <h1 className='text-3xl lg:text-4xl font-bold mb-5 text-center'>Create your branch!</h1>
 
@@ -129,6 +128,14 @@ const Generate = () => {
 
     </div>
 
+  )
+}
+
+const Generate = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GenerateContent />
+    </Suspense>
   )
 }
 

@@ -19,7 +19,7 @@ export default function Home() {
             for you.
           </p>
           <p className="text-lg lg:text-xl py-3 font-semibold text-orange-900">
-            Join 70M+ people using Branch for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, YouTube and other social media profiles.
+          One link to help you share everything you create and curate from your Youtube, Instagram and other social media profiles.
           </p>
           <div className="input flex flex-col sm:flex-row gap-3 sm:gap-5 w-full">
             <input value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder="bran.ch/" className="p-4 rounded-lg w-full sm:w-1/3 bg-white focus:outline-orange-900 placeholder:font-bold" />
